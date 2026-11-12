@@ -82,4 +82,24 @@ public class MovieViewController implements Initializable {
 
 
     }
+
+    public void handleUpdateMovie(ActionEvent actionEvent) {
+
+        Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
+
+        if (selectedMovie != null) {
+
+            // update selectedMovie
+            selectedMovie.setTitle(txtMovieTitle.getText());
+            selectedMovie.setYear(Integer.parseInt(txtMovieYear.getText()));
+
+            try {
+                movieModel.updateMovie(selectedMovie);
+            }
+            catch (Exception err) {
+                displayError(err);
+            }
+
+        }
+    }
 }

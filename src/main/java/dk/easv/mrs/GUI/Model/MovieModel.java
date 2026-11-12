@@ -39,4 +39,8 @@ public class MovieModel {
         Movie createdmovie = movieManager.createMovie(newMovie);
         moviesToBeViewed.add(createdmovie);
     }
+
+    public void updateMovie(Movie updatedMovie) throws Exception {
+        movieManager.updateMovie(updatedMovie);
+    }
 }
