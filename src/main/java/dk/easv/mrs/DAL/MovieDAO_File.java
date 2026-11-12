@@ -26,7 +26,7 @@ public class MovieDAO_File implements IMovieDataAccess {
         List<String> lines = Files.readAllLines(Path.of(MOVIES_FILE));
         List<Movie> movies = new ArrayList<>();
 
-// Parse each line as movie
+        // Parse each line as movie
         for (String line: lines) {
             String[] separatedLine = line.split(",");
 
