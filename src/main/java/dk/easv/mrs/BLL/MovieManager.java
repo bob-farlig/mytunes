@@ -40,4 +40,8 @@ public class MovieManager {
     public void updateMovie(Movie updatedMovie) throws Exception {
         movieDAO.updateMovie(updatedMovie);
     }
+
+    public void deleteMovie(Movie movieToBeDeleted) throws Exception {
+        movieDAO.deleteMovie(movieToBeDeleted);
+    }
 }

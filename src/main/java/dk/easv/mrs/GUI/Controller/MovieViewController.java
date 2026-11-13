@@ -55,6 +55,16 @@ public class MovieViewController implements Initializable {
             }
         });
 
+        lstMovies.getSelectionModel().selectedItemProperty().addListener((
+                (observable, oldValue, newValue) ->
+                {
+                    // lambda expression
+                    txtMovieTitle.setText(newValue.getTitle());
+                    txtMovieYear.setText(newValue.getYear() + "");
+                    //System.out.println(newValue);
+                }
+                ));
+
     }
 
     private void displayError(Throwable t)
@@ -95,6 +105,7 @@ public class MovieViewController implements Initializable {
 
             try {
                 movieModel.updateMovie(selectedMovie);
+                lstMovies.refresh();
             }
             catch (Exception err) {
                 displayError(err);
@@ -102,4 +113,22 @@ public class MovieViewController implements Initializable {
 
         }
     }
+
+    public void handleDeleteMovie(ActionEvent actionEvent) {
+
+        Movie selectedMovie = lstMovies.getSelectionModel().getSelectedItem();
+
+        if (selectedMovie != null) {
+
+            try {
+                movieModel.deleteMovie(selectedMovie);
+                lstMovies.refresh();
+            } catch (Exception err) {
+                displayError(err);
+            }
+
+        }
+
+    }
+
 }

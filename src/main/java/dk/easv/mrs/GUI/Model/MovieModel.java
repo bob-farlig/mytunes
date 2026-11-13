@@ -43,4 +43,12 @@ public class MovieModel {
     public void updateMovie(Movie updatedMovie) throws Exception {
         movieManager.updateMovie(updatedMovie);
     }
+
+    public void deleteMovie(Movie movieToBeDeleted) throws Exception {
+
+        // delete movie in file
+        movieManager.deleteMovie(movieToBeDeleted);
+        // delete movie in list
+        moviesToBeViewed.remove(movieToBeDeleted);
+    }
 }
