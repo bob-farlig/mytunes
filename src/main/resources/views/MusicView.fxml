@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="481.0" prefWidth="686.0" style="-fx-background-color: #3A3A3A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
+<AnchorPane prefHeight="481.0" prefWidth="686.0" style="-fx-background-color: #3A3A3A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MusicViewController">
    <children>
       <Button fx:id="newSong" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewSong" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #DC143C;" text="New Song to database" />
       <Button fx:id="deleteSong" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeleteSong" style="-fx-background-color: #DC143C;" text="Delete Song from database" />

@@ -183,4 +183,44 @@ public class MusicViewController implements Initializable {
 
     }
 
+
+    //add new song to list
+    public void handleNewSong(ActionEvent actionEvent) {
+    }
+
+    //delete a song from list
+    public void handleDeleteSong(ActionEvent actionEvent) {
+    }
+
+    //add a new playlist
+    public void handleAddPlaylist(ActionEvent actionEvent) {
+    }
+
+    //delete a playlist
+    public void handleDeletePlaylist(ActionEvent actionEvent) {
+    }
+
+    //edits a playlist
+    public void handleEditPlaylist(ActionEvent actionEvent) {
+    }
+
+    //add a song to a playlist
+    public void handleAddSong(ActionEvent actionEvent) {
+    }
+
+    //remove a song from a playlist
+    public void handleRemoveSong(ActionEvent actionEvent) {
+    }
+
+    //play or pause music
+    public void handlePlayPause(ActionEvent actionEvent) {
+    }
+
+    //skips to next song
+    public void handleNext(ActionEvent actionEvent) {
+    }
+
+    //goes back to previous song
+    public void handlePrevious(ActionEvent actionEvent) {
+    }
 }
