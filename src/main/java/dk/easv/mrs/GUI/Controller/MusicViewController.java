@@ -220,7 +220,7 @@ public class MusicViewController implements Initializable {
     public void handleNext(ActionEvent actionEvent) {
     }
 
-    //goes back to previous song
+    //goes back to last song
     public void handlePrevious(ActionEvent actionEvent) {
     }
 }
