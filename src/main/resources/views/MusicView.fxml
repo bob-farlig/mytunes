@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="481.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
+<AnchorPane prefHeight="481.0" prefWidth="686.0" style="-fx-background-color: #3A3A3A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
    <children>
-      <Button fx:id="newSong" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCreateNewMovie" prefHeight="26.0" prefWidth="150.0" text="New Song to database" />
-      <Button fx:id="deleteSong" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleUpdateMovie" text="Delete Song from database" />
-      <TableView layoutX="288.0" layoutY="112.0" prefHeight="243.0" prefWidth="382.0">
+      <Button fx:id="newSong" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewSong" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #DC143C;" text="New Song to database" />
+      <Button fx:id="deleteSong" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeleteSong" style="-fx-background-color: #DC143C;" text="Delete Song from database" />
+      <TableView layoutX="288.0" layoutY="112.0" prefHeight="243.0" prefWidth="382.0" style="-fx-background-color: #BDBDBD;">
         <columns>
           <TableColumn prefWidth="75.0" text="Song Title" />
           <TableColumn prefWidth="75.0" text="Artist" />
@@ -23,7 +23,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TableView layoutX="15.0" layoutY="87.0" prefHeight="268.0" prefWidth="259.0">
+      <TableView layoutX="15.0" layoutY="87.0" prefHeight="268.0" prefWidth="259.0" style="-fx-background-color: #BDBDBD;">
         <columns>
           <TableColumn prefWidth="24.799988746643066" text="#" />
           <TableColumn prefWidth="196.00002670288086" text="Playlist" />
@@ -32,24 +32,30 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="addPlaylist" layoutX="15.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleUpdateMovie" text="Add Playlist" />
-      <Button fx:id="deletePlaylist" layoutX="183.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeleteMovie" text="Delete Playlist" AnchorPane.leftAnchor="183.0" />
-      <Button fx:id="addSong" layoutX="496.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleUpdateMovie" text="Add Song" />
-      <Button fx:id="removeSong" layoutX="572.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeleteMovie" text="Remove Song" />
-      <Button fx:id="deletePlaylist1" layoutX="100.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeleteMovie" text="Edit Playlist" />
-      <HBox layoutX="171.0" layoutY="422.0" prefHeight="26.0" prefWidth="344.0">
+      <Button fx:id="addPlaylist" layoutX="15.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleAddPlaylist" style="-fx-background-color: #DC143C;" text="Add Playlist" />
+      <Button fx:id="deletePlaylist" layoutX="183.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeletePlaylist" style="-fx-background-color: #DC143C;" text="Delete Playlist" AnchorPane.leftAnchor="183.0" />
+      <Button fx:id="addSong" layoutX="496.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleAddSong" style="-fx-background-color: #DC143C;" text="Add Song" />
+      <Button fx:id="removeSong" layoutX="572.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleRemoveSong" style="-fx-background-color: #DC143C;" text="Remove Song" />
+      <Button fx:id="deletePlaylist1" layoutX="100.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleEditPlaylist" style="-fx-background-color: #DC143C;" text="Edit Playlist" />
+      <TextField layoutX="288.0" layoutY="87.0" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="Playlist" />
+      <Label fx:id="selectedPlaylist" layoutX="346.0" layoutY="91.0" prefHeight="18.0" prefWidth="278.0" text="No playlist selected" />
+      <AnchorPane layoutY="410.0" prefHeight="70.0" prefWidth="686.0" style="-fx-background-color: #DC143C;">
          <children>
-            <Label fx:id="currentTime" prefHeight="18.0" prefWidth="52.0" text="&quot;00:00&quot;" />
-            <Slider fx:id="timeSlider" prefHeight="14.0" prefWidth="247.0" HBox.hgrow="ALWAYS" />
-            <Label fx:id="fullTime" prefHeight="18.0" prefWidth="52.0" text="&quot;00:00&quot;" />
+            <Button fx:id="playPause" layoutX="591.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePlayPause" style="-fx-background-color: #3A3A3A;" text="&gt;|" textFill="CRIMSON" AnchorPane.leftAnchor="591.0" />
+            <Button fx:id="next" layoutX="630.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleNext" style="-fx-background-color: #3A3A3A;" text="--&gt;" textFill="CRIMSON" />
+            <HBox layoutX="172.0" layoutY="3.0" prefHeight="26.0" prefWidth="501.0">
+               <children>
+                  <Label fx:id="currentTime" prefHeight="18.0" prefWidth="52.0" text="&quot;00:00&quot;" />
+                  <Slider fx:id="timeSlider" prefHeight="14.0" prefWidth="247.0" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="fullTime" prefHeight="18.0" prefWidth="52.0" text="&quot;00:00&quot;" />
+               </children>
+            </HBox>
+            <Label fx:id="songTitle" layoutX="182.0" layoutY="31.0" text="No song selected" />
+            <Label fx:id="Artist" layoutX="182.0" layoutY="52.0" text="Unknow artist" />
+            <Button fx:id="prev" layoutX="547.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePrevious" style="-fx-background-color: #3A3A3A;" text="&lt;--" textFill="CRIMSON" />
+            <Slider fx:id="volumeSlider" layoutX="14.0" layoutY="10.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="14.0" />
+            <TextField layoutX="33.0" layoutY="22.0" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: #3A3A3A; -fx-text-fill: #dc143c;" text="🔉" />
          </children>
-      </HBox>
-      <Label fx:id="songTitle" layoutX="176.0" layoutY="440.0" />
-      <Label fx:id="Artist" layoutX="176.0" layoutY="458.0" />
-      <Button fx:id="prev" layoutX="19.0" layoutY="427.0" mnemonicParsing="false" text="&lt;--" />
-      <Button fx:id="pauseStart" layoutX="54.0" layoutY="427.0" mnemonicParsing="false" text="&gt;|" AnchorPane.leftAnchor="54.0" />
-      <Button fx:id="next" layoutX="83.0" layoutY="427.0" mnemonicParsing="false" text="--&gt;" />
-      <TextField layoutX="288.0" layoutY="87.0" prefHeight="26.0" prefWidth="50.0" text="Playlist" />
-      <Label fx:id="selectedPlaylist" layoutX="338.0" layoutY="91.0" prefHeight="18.0" prefWidth="286.0" />
+      </AnchorPane>
    </children>
 </AnchorPane>
