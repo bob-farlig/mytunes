@@ -1,12 +1,12 @@
 package dk.easv.mrs.BE;
 
-public class Movie {
+public class Music {
 
     private int id;
     private String title;
     private int year;
 
-    public Movie(int id, int year, String title) {
+    public Music(int id, int year, String title) {
         this.id = id;
         this.title = title;
         this.year = year;
