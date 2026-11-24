@@ -1,4 +1,4 @@
 package dk.easv.mrs.GUI.Controller;
 
-public class SongToPlaylist {
+public class CreateNewSongController {
 }
