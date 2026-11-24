@@ -11,8 +11,8 @@
 
 <AnchorPane prefHeight="481.0" prefWidth="686.0" style="-fx-background-color: #3A3A3A;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MusicViewController">
    <children>
-      <Button fx:id="newSong" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewSong" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #DC143C;" text="New Song to database" />
-      <Button fx:id="deleteSong" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeleteSong" style="-fx-background-color: #DC143C;" text="Delete Song from database" />
+      <Button fx:id="btnNewSong" layoutX="343.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewSong" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #DC143C;" text="New Song to database" />
+      <Button fx:id="btnDeleteSong" layoutX="509.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeleteSong" style="-fx-background-color: #DC143C;" text="Delete Song from database" />
       <TableView layoutX="288.0" layoutY="112.0" prefHeight="243.0" prefWidth="382.0" style="-fx-background-color: #BDBDBD;">
         <columns>
           <TableColumn fx:id="tblSongTitle" prefWidth="188.79998779296875" text="Song Title" />
@@ -32,17 +32,17 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="CreatePlaylist" layoutX="15.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCreatePlaylist" style="-fx-background-color: #DC143C;" text="create Playlist" />
-      <Button fx:id="deletePlaylist" layoutX="183.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeletePlaylist" style="-fx-background-color: #DC143C;" text="Delete Playlist" AnchorPane.leftAnchor="183.0" />
-      <Button fx:id="addSong" layoutX="496.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleAddSong" style="-fx-background-color: #DC143C;" text="Add Song" />
-      <Button fx:id="removeSong" layoutX="572.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleRemoveSong" style="-fx-background-color: #DC143C;" text="Remove Song" />
-      <Button fx:id="deletePlaylist1" layoutX="105.5" layoutY="368.0" mnemonicParsing="false" onAction="#handleEditPlaylist" style="-fx-background-color: #DC143C;" text="Edit Playlist" />
+      <Button fx:id="btnCreatePlaylist" layoutX="15.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleCreatePlaylist" style="-fx-background-color: #DC143C;" text="create Playlist" />
+      <Button fx:id="btnDeletePlaylist" layoutX="183.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleDeletePlaylist" style="-fx-background-color: #DC143C;" text="Delete Playlist" AnchorPane.leftAnchor="183.0" />
+      <Button fx:id="btnAddSong" layoutX="496.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleAddSong" style="-fx-background-color: #DC143C;" text="Add Song" />
+      <Button fx:id="btnRemoveSong" layoutX="572.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleRemoveSong" style="-fx-background-color: #DC143C;" text="Remove Song" />
+      <Button fx:id="btnEditPlaylist1" layoutX="105.5" layoutY="368.0" mnemonicParsing="false" onAction="#handleEditPlaylist" style="-fx-background-color: #DC143C;" text="Edit Playlist" />
       <TextField layoutX="288.0" layoutY="87.0" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: #BDBDBD;" text="Playlist" />
       <Label fx:id="selectedPlaylist" layoutX="341.0" layoutY="91.0" prefHeight="18.0" prefWidth="329.0" style="-fx-background-color: #DC143C;" text="No playlist selected" />
       <AnchorPane layoutY="410.0" prefHeight="70.0" prefWidth="686.0" style="-fx-background-color: #DC143C;">
          <children>
-            <Button fx:id="playPause" layoutX="591.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePlayPause" style="-fx-background-color: #3A3A3A;" text="&gt;|" textFill="CRIMSON" AnchorPane.leftAnchor="591.0" />
-            <Button fx:id="next" layoutX="630.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleNext" style="-fx-background-color: #3A3A3A;" text="--&gt;" textFill="CRIMSON" />
+            <Button fx:id="btnPlayPause" layoutX="591.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePlayPause" style="-fx-background-color: #3A3A3A;" text="&gt;|" textFill="CRIMSON" AnchorPane.leftAnchor="591.0" />
+            <Button fx:id="btnNext" layoutX="630.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleNext" style="-fx-background-color: #3A3A3A;" text="--&gt;" textFill="CRIMSON" />
             <HBox layoutX="172.0" layoutY="3.0" prefHeight="26.0" prefWidth="501.0">
                <children>
                   <Label fx:id="currentTime" prefHeight="18.0" prefWidth="52.0" text="&quot;00:00&quot;" />
@@ -52,7 +52,7 @@
             </HBox>
             <Label fx:id="songTitle" layoutX="182.0" layoutY="31.0" text="No song selected" />
             <Label fx:id="Artist" layoutX="182.0" layoutY="52.0" text="Unknow artist" />
-            <Button fx:id="prev" layoutX="547.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePrevious" style="-fx-background-color: #3A3A3A;" text="&lt;--" textFill="CRIMSON" />
+            <Button fx:id="btnPrev" layoutX="547.0" layoutY="36.0" mnemonicParsing="false" onAction="#handlePrevious" style="-fx-background-color: #3A3A3A;" text="&lt;--" textFill="CRIMSON" />
             <Slider fx:id="volumeSlider" layoutX="14.0" layoutY="10.0" orientation="VERTICAL" prefHeight="49.0" prefWidth="14.0" />
             <TextField layoutX="33.0" layoutY="22.0" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: #3A3A3A; -fx-text-fill: #dc143c;" text="🔉" />
          </children>
