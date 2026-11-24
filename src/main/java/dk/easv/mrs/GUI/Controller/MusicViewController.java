@@ -36,7 +36,7 @@ public class MusicViewController implements Initializable {
     private MusicModel musicModel;
 
     @FXML
-    private TextField txtMovieTitle, txtMovieYear, txtMovieSearch;
+    private TextField txtMusicTitle, txtMovieYear, txtMovieSearch;
 
     public MusicViewController()  {
 
@@ -223,4 +223,5 @@ public class MusicViewController implements Initializable {
     //goes back to last song
     public void handlePrevious(ActionEvent actionEvent) {
     }
+
 }
