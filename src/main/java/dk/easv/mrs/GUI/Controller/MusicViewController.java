@@ -5,223 +5,95 @@ import dk.easv.mrs.BE.Music;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 // project imports
 import dk.easv.mrs.GUI.Model.MusicModel;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
-public class MusicViewController implements Initializable {
+public class MusicViewController {
+        @FXML
+        private Button btnNewSong, btnDeleteSong, btnCreatePlaylist, btnDeletePlaylist, btnAddSong, btnRemoveSong, btnEditPlaylist1, btnPlayPause, btnNext, btnPrev;
 
-    @FXML
-    private TableView<Music> tblMovies;
+        @FXML
+        private TableView<?> tblSong, tblPlaylistsongs;
 
-    @FXML
-    private TableColumn<Music, String> colTitle;
+        @FXML
+        private TableColumn<?, ?> tblSongTitle, tblArtist, tblTime, tblPlaylistNumber, tblPlaylist;
 
-    @FXML
-    private TableColumn<Music, Integer> colYear;
+        @FXML
+        private Label selectedPlaylist, currentTime, fullTime, songTitle, Artist;
 
-    @FXML
-    private Button btnCreate, btnUpdate, btnDelete;
+        @FXML
+        private Slider timeSlider, volumeSlider;
 
-    @FXML
-    private ListView<Music> lstMovies;
+        @FXML
+        public void initialize() {
 
-    private MusicModel musicModel;
-
-    @FXML
-    private TextField txtMusicTitle, txtMovieYear, txtMovieSearch;
-
-    public MusicViewController()  {
-
-        try {
-            musicModel = new MusicModel();
-        } catch (Exception e) {
-            displayError(e);
-            e.printStackTrace();
         }
-    }
 
+        public void handleCreatePlaylist(ActionEvent actionEvent) {
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle)
-    {
-        // setup columns in tableview
-        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
-
-        // connect tableview to the ObservableList (FilteredList)
-        tblMovies.setItems(musicModel.getObservableMovies());
-
-        lstMovies.setItems(musicModel.getObservableMovies());
-
-        txtMovieSearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
             try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/mrs/GUI/View/CreatePlaylistView.fxml"));
+                Parent root = loader.load();
 
-                musicModel.getObservableMovies().setPredicate(movie -> {
+                Stage stage = new Stage();
+                stage.setTitle("Create Playlist");
+                stage.setScene(new Scene(root));
 
-                    // If filter text is empty, display all movies.
-                    if (newValue == null || newValue.isEmpty()) {
-                        return true;
-                    }
+                // Blokerer hovedvinduet, indtil det nye vindue lukkes (valgfrit)
+                stage.initModality(Modality.APPLICATION_MODAL);
 
-                    String lowerCaseFilter = newValue.toLowerCase();
-
-                    if (movie.getTitle().toLowerCase().contains(lowerCaseFilter)) {
-                        return true;
-                    } else return Integer.toString(movie.getYear()).contains(lowerCaseFilter);
-                });
-                //movieModel.searchMovie(newValue);
-            } catch (Exception e) {
-                displayError(e);
+                // showAndWait() venter, til vinduet lukkes – show() lader begge vinduer være aktive
+                stage.showAndWait();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
-
-        SortedList<Music> sortedData = new SortedList<>(musicModel.getObservableMovies());
-        sortedData.comparatorProperty().bind(tblMovies.comparatorProperty());
-        tblMovies.setItems(sortedData);
-
-        tblMovies.getSelectionModel().selectedItemProperty().addListener((
-                (observable, oldValue, newValue) ->
-                {
-                    // lambda expression
-                    txtMovieTitle.setText(newValue.getTitle());
-                    txtMovieYear.setText(newValue.getYear() + "");
-                    //System.out.println(newValue);
-                }
-        ));
-
-        lstMovies.getSelectionModel().selectedItemProperty().addListener((
-                (observable, oldValue, newValue) ->
-                {
-                    // lambda expression
-                    txtMovieTitle.setText(newValue.getTitle());
-                    txtMovieYear.setText(newValue.getYear() + "");
-                    //System.out.println(newValue);
-                }
-                ));
-
-    }
-
-    private void displayError(Throwable t)
-    {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Something went wrong");
-        alert.setHeaderText(t.getMessage());
-        alert.showAndWait();
-    }
-
-    public void handleCreateNewMovie(ActionEvent actionEvent)
-    {
-        // get data from front-end
-
-        String title = txtMovieTitle.getText();
-        int year = Integer.parseInt(txtMovieYear.getText());
-
-        Music newMusic = new Music(-1, year, title);
-
-        try {
-            musicModel.createMovie(newMusic);
-        }
-        catch (Exception err) {
-            displayError(err);
         }
 
-
-    }
-
-    public void handleUpdateMovie(ActionEvent actionEvent) {
-
-        Music selectedMusic = lstMovies.getSelectionModel().getSelectedItem();
-
-        if (selectedMusic != null) {
-
-            // update selectedMovie
-            selectedMusic.setTitle(txtMovieTitle.getText());
-            selectedMusic.setYear(Integer.parseInt(txtMovieYear.getText()));
-
-            // comm with model
-            try {
-                musicModel.updateMovie(selectedMusic);
-                lstMovies.refresh();
-            }
-            catch (Exception err) {
-                displayError(err);
-            }
-
-        }
-    }
-
-    /**
-     * Delete the movie
-     * @param actionEvent
-     */
-    public void handleDeleteMovie(ActionEvent actionEvent) {
-
-        // Find the selected movie
-        Music selectedMusic = lstMovies.getSelectionModel().getSelectedItem();
-
-        // check whether selected movie is null
-        if (selectedMusic != null) {
-
-            // communicate with model
-            try {
-                musicModel.deleteMovie(selectedMusic);
-                //lstMovies.refresh();
-            } catch (Exception err) {
-                displayError(err);
-            }
+        public void handleDeletePlaylist(ActionEvent actionEvent) {
 
         }
 
+        public void handleAddSong(ActionEvent actionEvent) {
+
+        }
+
+        public void handleRemoveSong(ActionEvent actionEvent) {
+
+        }
+
+        public void handleEditPlaylist(ActionEvent actionEvent) {
+
+        }
+
+        public void handlePlayPause(ActionEvent actionEvent) {
+
+        }
+
+        public void handleNext(ActionEvent actionEvent) {
+
+        }
+
+        public void handlePrevious(ActionEvent actionEvent) {
+
+        }
+
+
+
     }
 
 
-    //add new song to list
-    public void handleNewSong(ActionEvent actionEvent) {
-    }
 
-    //delete a song from list
-    public void handleDeleteSong(ActionEvent actionEvent) {
-    }
-
-    //add a new playlist
-    public void handleAddPlaylist(ActionEvent actionEvent) {
-    }
-
-    //delete a playlist
-    public void handleDeletePlaylist(ActionEvent actionEvent) {
-    }
-
-    //edits a playlist
-    public void handleEditPlaylist(ActionEvent actionEvent) {
-    }
-
-    //add a song to a playlist
-    public void handleAddSong(ActionEvent actionEvent) {
-    }
-
-    //remove a song from a playlist
-    public void handleRemoveSong(ActionEvent actionEvent) {
-    }
-
-    //play or pause music
-    public void handlePlayPause(ActionEvent actionEvent) {
-    }
-
-    //skips to next song
-    public void handleNext(ActionEvent actionEvent) {
-    }
-
-    //goes back to last song
-    public void handlePrevious(ActionEvent actionEvent) {
-    }
-
-}
